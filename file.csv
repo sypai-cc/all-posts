@@ -1,5 +1,6 @@
 ID,Title,Date,Content,Author,Tags,Categories
-956,思源派发布文章已经无需审核,Fri Jul 26 2024 23:47:09 GMT+0000 (Coordinated Universal Time),<p>现在，只要正常登录思源派，即可免审核发布自己的文章</p>,HAN,,CSS
+958,思源派全站文章导出,Sat Jul 27 2024 01:26:03 GMT+0000 (Coordinated Universal Time),"<h2>思源派文章现在会每隔一个小时自动发布全站文章数据到GitHub上面</h2><p>访问以下仓库，下载file.csv即可</p><p><a href=""https://github.com/sypai-cc/all-posts"">https://github.com/sypai-cc/all-posts</a></p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/QQ截图20240727012840.png"" alt=""QQ截图20240727012840"" data-edit-file-id=""959"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/QQ截图20240727012840.png"" /></p>",HAN,,新闻
+956,思源派发布文章已经无需审核,Fri Jul 26 2024 23:47:09 GMT+0000 (Coordinated Universal Time),<p>现在，只要正常登录思源派，即可免审核发布自己的文章</p>,HAN,,新闻
 954,思源版 Dataview.js 的愿景,Fri Jul 26 2024 21:04:38 GMT+0000 (Coordinated Universal Time),"<p>基于 js query 和弘佬的 Data Query 做二次开发（把 API 调整地更加人性化一点）；可以的话最好加上能降低编写门槛的 GUI 配置界面。</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/image-47-1024x464.png"" alt=""image"" data-edit-file-id=""953"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/image-47.png"" /></p><p>以上渲染结果对应以下代码：</p><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">//!js
 const query = async () =&gt; {
 let dv = Query.DataView(protyle, item, top);
