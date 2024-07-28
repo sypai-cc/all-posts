@@ -1,4 +1,106 @@
 ID,Title,Date,Content,Author,Tags,Categories
+977,js 代码片段实现，只展开当前活动文档所在的目录树,Sun Jul 28 2024 13:38:25 GMT+0000 (Coordinated Universal Time),"<h2>需求</h2><p>在使用“始终定位打开的文档”功能时，只展开当前文档的文档树，自动关闭（不展开）其它无关的文档树。</p><p>例如：</p><p>有笔记本 A，内有文档 A1，子文档 A2、子子文档 A3。</p><p>有笔记本 B，内有文档 B1，子文档 B2、子子文档 B3。</p><p>已将文档 A2、B2 打开，显示在上方页签栏中。</p><p>启用“始终定位打开的文档”功能。</p><p>点击 A2 页签，左侧文档树自动展开，并定位到 A-A1-A2；A3 列表不展开</p><p>点击 B2 页签，左侧文档树自动展开，定位到 B-B1-B2；<strong>同时关闭 A-A1-A2 文档树的展开状态，恢复到笔记本 A</strong>。也就是仅保留当前活动页签对应的文档树是展开状态，其它文档树分支全部关闭，包括当前活动文档的子文档树。</p><h2>实现</h2><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">// 等待标签页容器渲染完成后开始监听
+whenElementExist('.layout__center').then(async element =&gt; {
+    // 等待笔记列表加载完毕
+    await sleep(40);
+    // 监听页签切换事件
+    observeTabChanged(element, (tab) =&gt; {
+        // 折叠所有笔记，然后定位当前笔记
+        collapseAllBooksThenFocusCurrentBook(element, tab);
+    });
+});
+// 折叠所有笔记，然后定位当前笔记
+async function collapseAllBooksThenFocusCurrentBook(element, tab) {
+    // 等待激活文档加载完毕
+    await whenElementExist(()=&gt;{
+        const content = element.querySelector('.layout-tab-container [data-id=""'+tab.getAttribute(""data-id"")+'""]');
+        return content &amp;&amp; content.getAttribute(""data-loading"") === ""finished"";
+    });
+    // 折叠所有笔记
+    document.querySelectorAll(""ul.b3-list[data-url]"").forEach(async book =&gt; {
+        const bookName = tab.getAttribute(""aria-label"")?.split('/')[0];
+        if(bookName) {
+            // 如果在本笔记中则不再折叠
+            const bookText = book.querySelector('li[data-type=""navigation-root""] span.b3-list-item__text')?.innerText;
+            if(bookText === bookName) {
+                return;
+            }
+        }
+        // 折叠笔记
+        const bookArrowBtn = book.querySelector('li[data-type=""navigation-root""] span.b3-list-item__toggle');
+        if (bookArrowBtn &amp;&amp; bookArrowBtn.firstElementChild.classList.contains(""b3-list-item__arrow--open"")) {
+            bookArrowBtn.click();
+        }
+    });
+    // 定位当前笔记
+    document.querySelector("".layout-tab-container .block__icons span[data-type=focus]"")?.click();
+}
+// 监听页签切换事件
+function observeTabChanged(parentNode, callback) {
+    // 创建一个回调函数来处理观察到的变化
+    const observerCallback = function(mutationsList, observer) {
+        // 用常规方式遍历 mutationsList 中的每一个 mutation
+        for (let mutation of mutationsList) {
+            // 属性被修改
+            if (mutation.type === 'attributes' &amp;&amp; mutation.attributeName === 'class') {
+                const element = mutation.target;
+                if (element.tagName.toLowerCase() === 'li' &amp;&amp; element.getAttribute('data-type') === 'tab-header' &amp;&amp; element.classList.contains('item--focus')) {
+                    if(typeof callback === 'function') callback(element);
+                }
+            }
+            // 如果有新的子节点被添加
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach(node =&gt; {
+                    if (node.nodeType === Node.ELEMENT_NODE &amp;&amp; node.tagName.toLowerCase() === 'li') {
+                        if (node.getAttribute('data-type') === 'tab-header' &amp;&amp; node.classList.contains('item--focus')) {
+                            if(typeof callback === 'function') callback(node);
+                        }
+                    }
+                });
+            }
+        }
+    };
+    // 创建一个观察器实例并传入回调函数
+    const observer = new MutationObserver(observerCallback);
+    // 配置观察器：传递一个对象来指定观察器的行为
+    const config = { attributes: true, attributeFilter: ['class'], childList: true, subtree: true };
+    // 开始观察目标节点
+    observer.observe(parentNode, config);
+    // 返回一个函数，用于停止观察
+    return function stopObserving() {
+        observer.disconnect();
+    };
+}
+// 延迟执行
+function sleep(ms) {
+    return new Promise(resolve =&gt; setTimeout(resolve, ms));
+}
+// 等待元素渲染完成后执行
+function whenElementExist(selector) {
+    return new Promise(resolve =&gt; {
+        const checkForElement = () =&gt; {
+            let element = null;
+            if (typeof selector === 'function') {
+                element = selector();
+            } else {
+                element = document.querySelector(selector);
+            }
+            if (element) {
+                resolve(element);
+            } else {
+                requestAnimationFrame(checkForElement);
+            }
+        };
+        checkForElement();
+    });
+}</code></pre><h2>效果</h2><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/t2.gif"" alt=""t2"" data-edit-file-id=""975"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/t2.gif"" /></p><h2>使用方法</h2><p>设置 》外观 》代码片段 》js 中新增加代码片段，然后把上面的代码粘贴过去即可。</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/image-WGgDxi6-1024x603.png"" alt=""image-WGgDxi6"" data-edit-file-id=""976"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/image-WGgDxi6.png"" /></p><h2>不足</h2><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">const bookName = tab.getAttribute(""aria-label"")?.split('/')[0];
+        if(bookName) {
+            // 如果在本笔记中则不再折叠
+            const bookText = book.querySelector('li[data-type=""navigation-root""] span.b3-list-item__text')?.innerText;
+            if(bookText === bookName) {
+                return;
+            }
+        }</code></pre><p>这段代码，本意是想通过标签的<span style=""color: var(--main-color)"">aria-label属性实现，如果展开的笔记是当前点击的文档所在笔记不再折叠再展开了，这样防止出现跳动。但现在想来如果同一个笔记下，展开多个目录可能会导致同个笔记下的文档切换时不再折叠，<strong>不知道是否符合你的需求，如果不符合，建议把这段代码删除</strong>。而且这段代码在打开文档时还会出现跳动，实现并不完美。</span></p><p>比如，如下场景不会折叠同个笔记下的目录</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/t4.gif"" alt=""t4"" data-edit-file-id=""978"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/t4.gif"" /></p><h2>最后</h2><p>由于刚接触思源，对思源 api 还不是很了解，所以选择用 js 代码片段实现，纯原生 js 实现，方法比较笨，勉强能用。</p><p>不足之处也请各界大佬们帮忙改进或多多批评指正！</p><p>文章来源：<a href=""https://ld246.com/article/1717306355600"">https://ld246.com/article/1717306355600</a></p>",wilson,"代码片段,目录树",JS
 958,思源派全站文章导出,Sat Jul 27 2024 01:26:03 GMT+0000 (Coordinated Universal Time),"<h2>思源派文章现在会每隔一个小时自动发布全站文章数据到GitHub上面</h2><p>访问以下仓库，下载file.csv即可</p><p><a href=""https://github.com/sypai-cc/all-posts"">https://github.com/sypai-cc/all-posts</a></p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/QQ截图20240727012840.png"" alt=""QQ截图20240727012840"" data-edit-file-id=""959"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/QQ截图20240727012840.png"" /></p>",HAN,,新闻
 956,思源派发布文章已经无需审核,Fri Jul 26 2024 23:47:09 GMT+0000 (Coordinated Universal Time),<p>现在，只要正常登录思源派，即可免审核发布自己的文章</p>,HAN,,新闻
 954,思源版 Dataview.js 的愿景,Fri Jul 26 2024 21:04:38 GMT+0000 (Coordinated Universal Time),"<p>基于 js query 和弘佬的 Data Query 做二次开发（把 API 调整地更加人性化一点）；可以的话最好加上能降低编写门槛的 GUI 配置界面。</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/image-47-1024x464.png"" alt=""image"" data-edit-file-id=""953"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/image-47.png"" /></p><p>以上渲染结果对应以下代码：</p><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">//!js
