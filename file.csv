@@ -1,4 +1,28 @@
 ID,Title,Date,Content,Author,Tags,Categories
+982,如何查看最近写了哪些笔记呢？,Sun Jul 28 2024 23:53:06 GMT+0000 (Coordinated Universal Time),"<h2>需求</h2><p>我会把每天的笔记按分类，写在不同的文档里。想有一个自动的视图，能看到今天写了哪些笔记。</p><p>比如今天看到一个软件不错，就记录在【windows &gt; 软件使用】页面里。就希望自动更新的视图里能展示：</p><blockquote><p>2024-07-27</p><ul><li>windows &gt; 软件使用<ul><li>写的笔记内容</li></ul></li></ul></blockquote><p>应该通过什么功能、插件来实现呢？或者写代码如何实现</p><p>求大佬解答</p><h2>实现</h2><p>如果想自定义，还得 js，这里建议安装 data-query 插件</p><p><span class=""vditor-reset__preview""><img src=""https://b3logfile.com/file/2024/07/image-ruYYTFd.png?imageView2/2/interlace/1/format/webp"" alt=""image.png"" /></span></p><p>然后就可以配合 SQL 实现这种效果吧</p><p><span class=""vditor-reset__preview""><img src=""https://b3logfile.com/file/2024/07/image-jqbBgTI.png?imageView2/2/interlace/1/format/webp"" alt=""image.png"" /></span></p><p>代码如下：</p><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">//!js
+let query = async ()=&gt;{
+  // 数据查询
+  let dq = DV.DataQuery()
+  // sql 内容可以按需查询
+  let sql = ""select * from blocks where type IN ('l', 'i', 'b', 'p') and markdown &lt;&gt; '' order by updated desc""
+  let blocks = await dq.sql(sql).query()
+
+  // 返回列表块
+  // 引用块其实就是一个 html 片段，返回的字符串列表，只需要返回 html 片段即可达到生成双向链接类似的效果
+  let dv = new DV(protyle,item,top)
+  let days = [];
+  blocks.map(b=&gt;{
+    let day = b.sqlData.updated.substring(0,8)
+    day = day = day.substr(0, 4) + ""-"" + day.substr(4, 2) + ""-"" + day.substr(6, 2);
+    if(!days.includes(day)) {
+      days.push(day);
+      dv.addElement(`&lt;div data-type=""strong"" style=""padding: .3em 4px;margin: 4px 0;font-size: 2em;font-weight: 600;line-height: 1.5em;""&gt;${day}&lt;/div&gt;`)
+    }
+    dv.addElement(`&lt;div data-type=""block-ref"" data-subtype=""d"" data-id=""${b.sqlData.id}"" style=""border-top:1px solid #888;padding:15px 0;""&gt;${b.blockItem.block.content}&lt;/div&gt;`)
+  })
+  dv.show()
+}
+return query()</code></pre><p>以上代码参考了 mohuishou 大佬分享的脚本：<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fgithub.com%2Fzxhd863943427%2Fsiyuan-plugin-data-query%2Fissues%2F2"" rel=""nofollow ugc"">https://github.com/zxhd863943427/siyuan-plugin-data-query/issues/2</a></p><h2>使用方法</h2><p>输入嵌入块 /{{}} 然后把上述代码粘贴进去即可。</p><p><strong>这里仅仅是抛砖引玉，更个性化的需求可以根据自身情况进行修改。</strong></p><p>文章来源：<a href=""https://ld246.com/article/1722038210145"">https://ld246.com/article/1722038210145</a></p>",wilson,"data-query,dataview,sql",JS
 977,js 代码片段实现，只展开当前活动文档所在的目录树,Sun Jul 28 2024 13:38:25 GMT+0000 (Coordinated Universal Time),"<h2>需求</h2><p>在使用“始终定位打开的文档”功能时，只展开当前文档的文档树，自动关闭（不展开）其它无关的文档树。</p><p>例如：</p><p>有笔记本 A，内有文档 A1，子文档 A2、子子文档 A3。</p><p>有笔记本 B，内有文档 B1，子文档 B2、子子文档 B3。</p><p>已将文档 A2、B2 打开，显示在上方页签栏中。</p><p>启用“始终定位打开的文档”功能。</p><p>点击 A2 页签，左侧文档树自动展开，并定位到 A-A1-A2；A3 列表不展开</p><p>点击 B2 页签，左侧文档树自动展开，定位到 B-B1-B2；<strong>同时关闭 A-A1-A2 文档树的展开状态，恢复到笔记本 A</strong>。也就是仅保留当前活动页签对应的文档树是展开状态，其它文档树分支全部关闭，包括当前活动文档的子文档树。</p><h2>实现</h2><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">// 等待标签页容器渲染完成后开始监听
 whenElementExist('.layout__center').then(async element =&gt; {
     // 等待笔记列表加载完毕
