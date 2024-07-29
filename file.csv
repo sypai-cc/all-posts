@@ -1,10 +1,10 @@
 ID,Title,Date,Content,Author,Tags,Categories
-982,如何查看最近写了哪些笔记呢？,Sun Jul 28 2024 23:53:06 GMT+0000 (Coordinated Universal Time),"<h2>需求</h2><p>我会把每天的笔记按分类，写在不同的文档里。想有一个自动的视图，能看到今天写了哪些笔记。</p><p>比如今天看到一个软件不错，就记录在【windows &gt; 软件使用】页面里。就希望自动更新的视图里能展示：</p><blockquote><p>2024-07-27</p><ul><li>windows &gt; 软件使用<ul><li>写的笔记内容</li></ul></li></ul></blockquote><p>应该通过什么功能、插件来实现呢？或者写代码如何实现</p><p>求大佬解答</p><h2>实现</h2><p>如果想自定义，还得 js，这里建议安装 data-query 插件</p><p><span class=""vditor-reset__preview""><img src=""https://b3logfile.com/file/2024/07/image-ruYYTFd.png?imageView2/2/interlace/1/format/webp"" alt=""image.png"" /></span></p><p>然后就可以配合 SQL 实现这种效果吧</p><p><span class=""vditor-reset__preview""><img src=""https://b3logfile.com/file/2024/07/image-jqbBgTI.png?imageView2/2/interlace/1/format/webp"" alt=""image.png"" /></span></p><p>代码如下：</p><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">//!js
+982,如何查看最近写了哪些笔记呢？,Sun Jul 28 2024 23:53:06 GMT+0000 (Coordinated Universal Time),"<h2>需求</h2><p>我会把每天的笔记按分类，写在不同的文档里。想有一个自动的视图，能看到今天写了哪些笔记。</p><p>比如今天看到一个软件不错，就记录在【windows &gt; 软件使用】页面里。就希望自动更新的视图里能展示：</p><blockquote><p>2024-07-27</p><ul><li>windows &gt; 软件使用<ul><li>写的笔记内容</li></ul></li></ul></blockquote><p>应该通过什么功能、插件来实现呢？或者写代码如何实现</p><p>求大佬解答</p><h2>实现</h2><p>如果想自定义，还得 js，这里建议安装 data-query 插件</p><p><span class=""vditor-reset__preview""><img src=""https://b3logfile.com/file/2024/07/image-ruYYTFd.png?imageView2/2/interlace/1/format/webp"" alt=""image.png"" /></span></p><p>然后就可以配合 SQL 实现这种效果吧</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/image-49-1024x645.png"" alt=""image"" data-edit-file-id=""1086"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/image-49.png"" /></p><p>代码如下：</p><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">//!js
 let query = async ()=&gt;{
   // 数据查询
   let dq = DV.DataQuery()
   // sql 内容可以按需查询
-  let sql = ""select * from blocks where type IN ('l', 'i', 'b', 'p') and markdown &lt;&gt; '' order by updated desc""
+  let sql = ""select * from blocks where type IN ('d', 'l', 'b', 'p') and markdown &lt;&gt; '' order by updated desc""
   let blocks = await dq.sql(sql).query()
 
   // 返回列表块
@@ -18,11 +18,12 @@ let query = async ()=&gt;{
       days.push(day);
       dv.addElement(`&lt;div data-type=""strong"" style=""padding: .3em 4px;margin: 4px 0;font-size: 2em;font-weight: 600;line-height: 1.5em;""&gt;${day}&lt;/div&gt;`)
     }
+    dv.addElement(`&lt;div style=""color:#aaa;""&gt;${b.sqlData.hpath}&lt;/div&gt;`)
     dv.addElement(`&lt;div data-type=""block-ref"" data-subtype=""d"" data-id=""${b.sqlData.id}"" style=""border-top:1px solid #888;padding:15px 0;""&gt;${b.blockItem.block.content}&lt;/div&gt;`)
   })
   dv.show()
 }
-return query()</code></pre><p>以上代码参考了 mohuishou 大佬分享的脚本：<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fgithub.com%2Fzxhd863943427%2Fsiyuan-plugin-data-query%2Fissues%2F2"" rel=""nofollow ugc"">https://github.com/zxhd863943427/siyuan-plugin-data-query/issues/2</a></p><h2>使用方法</h2><p>输入嵌入块 {{}} 然后把上述代码粘贴进去即可。</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/t5.gif"" alt=""t5"" data-edit-file-id=""1084"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/t5.gif"" /></p><p> </p><p><strong>这里仅仅是抛砖引玉，更个性化的需求可以根据自身情况进行修改。</strong></p><p>文章来源：<a href=""https://ld246.com/article/1722038210145"">https://ld246.com/article/1722038210145</a></p>",wilson,"data-query,dataview,sql",JS
+return query()</code></pre><p>以上代码参考了 mohuishou 大佬分享的脚本：<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fgithub.com%2Fzxhd863943427%2Fsiyuan-plugin-data-query%2Fissues%2F2"" rel=""nofollow ugc"">https://github.com/zxhd863943427/siyuan-plugin-data-query/issues/2</a></p><h2>使用方法</h2><p>输入嵌入块 {{}} 然后把上述代码粘贴进去即可。</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/t5.gif"" alt=""t5"" data-edit-file-id=""1084"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/t5.gif"" /></p><p><strong>这里仅仅是抛砖引玉，更个性化的需求可以根据自身情况进行修改。</strong></p><p>文章来源：<a href=""https://ld246.com/article/1722038210145"">https://ld246.com/article/1722038210145</a></p>",wilson,"data-query,dataview,sql",JS
 985,代码片段分享：文档树展开状态保存 - 链滴,Sun Jul 28 2024 19:17:09 GMT+0000 (Coordinated Universal Time),"
                     <h2 id=""文档树自动展开-release-v1-0"">文档树自动展开_release_v1.0</h2>
 <h2 id=""写在前面-重要-重要-重要--"">写在前面(重要!重要!重要!)</h2>
