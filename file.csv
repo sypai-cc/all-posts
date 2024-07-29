@@ -22,7 +22,7 @@ let query = async ()=&gt;{
   })
   dv.show()
 }
-return query()</code></pre><p>以上代码参考了 mohuishou 大佬分享的脚本：<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fgithub.com%2Fzxhd863943427%2Fsiyuan-plugin-data-query%2Fissues%2F2"" rel=""nofollow ugc"">https://github.com/zxhd863943427/siyuan-plugin-data-query/issues/2</a></p><h2>使用方法</h2><p>输入嵌入块 {{}} 然后把上述代码粘贴进去即可。</p><p><strong>这里仅仅是抛砖引玉，更个性化的需求可以根据自身情况进行修改。</strong></p><p>文章来源：<a href=""https://ld246.com/article/1722038210145"">https://ld246.com/article/1722038210145</a></p>",wilson,"data-query,dataview,sql",JS
+return query()</code></pre><p>以上代码参考了 mohuishou 大佬分享的脚本：<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fgithub.com%2Fzxhd863943427%2Fsiyuan-plugin-data-query%2Fissues%2F2"" rel=""nofollow ugc"">https://github.com/zxhd863943427/siyuan-plugin-data-query/issues/2</a></p><h2>使用方法</h2><p>输入嵌入块 {{}} 然后把上述代码粘贴进去即可。</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/t5.gif"" alt=""t5"" data-edit-file-id=""1084"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/t5.gif"" /></p><p> </p><p><strong>这里仅仅是抛砖引玉，更个性化的需求可以根据自身情况进行修改。</strong></p><p>文章来源：<a href=""https://ld246.com/article/1722038210145"">https://ld246.com/article/1722038210145</a></p>",wilson,"data-query,dataview,sql",JS
 985,代码片段分享：文档树展开状态保存 - 链滴,Sun Jul 28 2024 19:17:09 GMT+0000 (Coordinated Universal Time),"
                     <h2 id=""文档树自动展开-release-v1-0"">文档树自动展开_release_v1.0</h2>
 <h2 id=""写在前面-重要-重要-重要--"">写在前面(重要!重要!重要!)</h2>
