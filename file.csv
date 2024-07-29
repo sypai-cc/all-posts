@@ -1,4 +1,197 @@
 ID,Title,Date,Content,Author,Tags,Categories
+1092,双链工作流个人使用经验 - 链滴,Mon Jul 29 2024 22:55:17 GMT+0000 (Coordinated Universal Time),"
+                    <p>本人在接触思源笔记后很早就看到了<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fwww.yuque.com%2Fdeerain%2Fgannbs%2Fffqk2e"" target=""_blank"" rel=""nofollow ugc"">双向链接时代的快速无压记录</a>这篇堪称双链领域圣经的文章，不过一直没有彻底投入 Daily Note 流程的怀抱，只在日记中零散写了一些有待整理的东西。后来有一天想整理一下知识管理的笔记，系统回顾了此前的一些无甚逻辑的随记和看过的网络文章，温故知新颇有所悟，进而开启了 Daily Note 承载万物的笔记策略，在实践中逐渐加深了对双链工作流的理解，这篇分享因此诞生。本文简单介绍个人对双链工作流的理解与使用，可以认为是对<a href=""https://ld246.com/article/1633719399031"">这篇帖子</a>的致敬。</p>
+<p>大佬的认知境界与思维深度显然是望尘莫及的，而普通人在面对笔记时<del>要考虑的就多了</del>，一般人往往是在学习工作实践中先遇到什么问题然后寻求解决方案，所以最在乎的事情其实是：</p>
+<ul>
+<li>“有什么东西能满足我的需求？”</li>
+</ul>
+<p>显然，<a href=""https://ld246.com/article/1711872539704#%E7%AC%94%E8%AE%B0%E7%9A%84%E4%B8%8D%E5%90%8C%E4%BD%BF%E7%94%A8%E7%9B%AE%E7%9A%84"">每个人的需求与使用目的都是不同的</a>，单纯说记笔记或者知识管理很有意义是没有意义的，任何笔记方案和整理方案都不可能完美贴合所有人的需求，得到所有人的认可。</p>
+<p>理论上，每个人应当根据自身的功能需求搭建一套适配率百分百的个性化笔记方案，而这显然是一件不切实际的事情，很多人连自己到底需要什么都想不清楚，更别说设计出一个独属于自己的笔记策略了。而想要寻求一个具有足够普适性的通用笔记方案，就必然会面对拷问：什么需求更普适、更通用、更本质？</p>
+<h2 id=""认知的有限性"">认知的有限性</h2>
+<p>人的记忆和理解能力都是有限的，可以说输入带宽有限，输出带宽有限，处理缓存有限，这些都在《金字塔原理》中有所论证。可以说，思维的有限性与信息的无限性组成了认知学习的根本矛盾，因此必须把注意力聚焦于有限的内容，尽一切可能地降低认知压力。降低人与信息交互过程中的认知压力可以说是各种笔记需求和知识管理需求中绝对普遍、绝对正确的追求，将压力降下去才会让人愿意去发挥能动性，践行将信息提炼为知识的加工过程。</p>
+<p>一切工具的本质都是为了增强人的机能，而笔记则是对认知机能的延拓，理想的笔记方案必然有利于认知减压。知识管理不是构造精美笔记或宏大图谱的过程，而是在获取信息时减压、提炼整理时减压、组织表达时减压的过程；这个过程不会因为笔记不好看而崩溃，但会因为减压失效而崩溃。在将知识的关联组建成框架的过程中可能维持知识结构有序自洽的难度超出人的认知能力，这正是笔记体系坚持不下去的常见原因。</p>
+<p>为了降低认知压力，除了探索先进的知识结构，还需要在信息交互的过程中进行难度拆分，将输入与整理分离，整理与输出分离，这就来到了双链工作流擅长的领域。</p>
+<h2 id=""无压记录---传递型双链"">无压记录 &amp; 传递型双链</h2>
+<p>双向链接各种神乎其神的用法，本质上依托于两个特性：</p>
+<blockquote>
+<p>正向链接关注当下的关联，反向链接关注未来的关联。</p>
+</blockquote>
+<p>以上是比较高级的说法，其实就是正链作引用，反链作汇总。</p>
+<p>假设我忽然有了一条绝妙的点子，得益于科技发展绝对不会出现电子文档写不下的状况，那么就应当用最快的速度把内容记录下来防止下一秒就忘了(经常发生)。写完后审视内容可以将其归类到某个主题，就在其上层添加对主题的引用，这就是「当下的关联」。等以后进入这条主题想进行一次整理了就打开反链将引用汇总，这就是「未来的关联」。把整理推到未来实现输入与整理分离，这就是 <a href=""https://ld246.com/forward?goto=https%3A%2F%2Fwww.yuque.com%2Fdeerain%2Fgannbs%2Fffqk2e"" target=""_blank"" rel=""nofollow ugc"">Daily Note 无压记录</a>的基本流程。</p>
+<p>无压记录的输入流程非常简单，只要快捷键打开今日日记然后如上记录就可以了，而在实践中可能会产生一些疑问：</p>
+<ul>
+<li>记录完了，怎样进行整理呢？</li>
+</ul>
+<p>见后文。</p>
+<ul>
+<li>主题引用在上方内容在下方，为什么先写内容后引用？</li>
+</ul>
+<p>因为笔者年纪大了记忆释放得比电容放电还快，先思索主题归属很容易下一刻就忘了本来要记啥。</p>
+<ul>
+<li>Daily Note 能否记录工作内容，与个人条目分离？</li>
+</ul>
+<p>只要在所有工作内容上层添加 <code>[[项目任务]]</code>，下层对不同项目工作各自引用主题，就可以在 <code>[[项目任务]]</code> 的反链中汇总近期工作事务，过滤个人条目。</p>
+<ul>
+<li>在日记里记录和直接进入主题记录有什么区别？</li>
+</ul>
+<p>还是参考<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fwww.yuque.com%2Fdeerain%2Fgannbs%2Fffqk2e"" target=""_blank"" rel=""nofollow ugc"">这篇文章</a>，一方面直接开写速度更快，另一方面可以保留记录时的情景上下文，其他优势见后文。</p>
+<ul>
+<li>这和用标签分类内容有什么区别？</li>
+</ul>
+<p>使用列表大纲组织内容，主题引用位于上层，记录内容位于下层，形如：</p>
+<pre><code class=""language-md highlight-chroma""><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-k"">-</span> [[练字]]
+</span></span><span class=""highlight-line""><span class=""highlight-cl"">    <span class=""highlight-k"">-</span> 倾斜偏旁可以压缩其横向空间
+</span></span><span class=""highlight-line""><span class=""highlight-cl"">    <span class=""highlight-k"">-</span> 字与字既要充分紧密，又要毫无接触
+</span></span></code></pre>
+<p>这种结构常称为传递型双链，链接所指与链接下文内容为上下层关系，即传递型双链的“上下文”内容归属于引用目标。对于无压记录，在进行引用时不一定关注链接本体内容，起作用的是引用目标处的反链；而只有反链的引用本质上与标签功能无异，因此传递型双链可以使用标签代替，使用文档级引用而非块级引用软件也不是不行。</p>
+<p>当然，与其说<a href=""https://ld246.com/article/1633719399031/comment/1633776885590?r=Imuvux#comments"">传递型双链的本质仍然是标签</a>，不如说反链为主的传递型双链覆盖了标签的作用。与标签相比，双链引用具有更灵活的转换能力，思源笔记中块引用右键菜单功能包含转换为动态锚文本、静态锚文本、纯文本、单向链接、星号静态锚文本、纯文本 + 星号静态锚文本、嵌入块，以及引用和本体(或本体包含子块)转换，标签的互动性被薄纱，仅剩的优势在于全局性和可嵌套性。当然思源特地做成了标签与双链解耦的架构有利于二者同时使用，参考<a href=""https://ld246.com/article/1677162198108#1-3-9--%E5%BC%BA%E5%88%B6-%E6%A0%87%E7%AD%BE%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99"">这篇文章</a>的标签用法。</p>
+<p>既然反链为主的传递型双链与标签近乎等价，那么有没有正链为主的传递型双链呢？单就形式而言，传递型双链的特征是一层列表中只含块引用，其余内容位于上下层，如果以正链为主那它大体上可以视为一层 MOC，描述的不是整理归属而是逻辑关联，不过本质上起得还是分类作用。</p>
+<p>一般而言，不表达整理归属的引用被称为关联型双链，用于内容间关联或指代，其本质上是用引用的本体补充锚文本，或者说把锚文本用作比内容块更小的粒度。考虑到传递型双链的形式特征明显，还是很容易与关联型双链区分的，例如在思源中可以用以下 SQL 语句查询文档的传递型双链：</p>
+<pre><code class=""language-sql highlight-chroma""><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-k"">select</span><span class=""highlight-w""> </span><span class=""highlight-o"">*</span><span class=""highlight-w""> </span><span class=""highlight-k"">from</span><span class=""highlight-w""> </span><span class=""highlight-n"">blocks</span><span class=""highlight-w""> </span><span class=""highlight-k"">where</span><span class=""highlight-w""> </span><span class=""highlight-n"">id</span><span class=""highlight-w""> </span><span class=""highlight-k"">in</span><span class=""highlight-w""> </span><span class=""highlight-p"">(</span><span class=""highlight-k"">select</span><span class=""highlight-w""> </span><span class=""highlight-n"">block_id</span><span class=""highlight-w""> </span><span class=""highlight-k"">from</span><span class=""highlight-w""> </span><span class=""highlight-n"">refs</span><span class=""highlight-w""> </span><span class=""highlight-k"">where</span><span class=""highlight-w""> </span><span class=""highlight-n"">def_block_root_id</span><span class=""highlight-w""> </span><span class=""highlight-o"">=</span><span class=""highlight-w""> </span><span class=""highlight-s1"">\'20240225124718-d7c6wb7\'</span><span class=""highlight-p"">)</span><span class=""highlight-w""> </span><span class=""highlight-k"">and</span><span class=""highlight-w""> </span><span class=""highlight-n"">markdown</span><span class=""highlight-w""> </span><span class=""highlight-k"">in</span><span class=""highlight-w""> </span><span class=""highlight-p"">(</span><span class=""highlight-k"">select</span><span class=""highlight-w""> </span><span class=""highlight-n"">markdown</span><span class=""highlight-w""> </span><span class=""highlight-k"">from</span><span class=""highlight-w""> </span><span class=""highlight-n"">refs</span><span class=""highlight-w""> </span><span class=""highlight-k"">where</span><span class=""highlight-w""> </span><span class=""highlight-n"">def_block_root_id</span><span class=""highlight-w""> </span><span class=""highlight-o"">=</span><span class=""highlight-w""> </span><span class=""highlight-s1"">\'20240225124718-d7c6wb7\'</span><span class=""highlight-p"">)</span><span class=""highlight-w""> </span><span class=""highlight-k"">order</span><span class=""highlight-w""> </span><span class=""highlight-k"">by</span><span class=""highlight-w""> </span><span class=""highlight-n"">created</span><span class=""highlight-w"">
+</span></span></span></code></pre>
+<p>配合文档流插件可以获得完美的整理体验。</p>
+<p>‍</p>
+<p>使用 Daily Note 无压记录的过程非常舒适，我们自然会去想有了输入之后怎样去做整理输出，毕竟<a href=""https://ld246.com/article/1711872539704/comment/1714767705902?r=Imuvux#comments"">笔记需要整理是一种不敢忤逆的政治正确</a>。对笔记和知识管理的批判超出了本文的讨论范围，这里只介绍 Daily Note 输入的内容怎样在需要时进行后处理。</p>
+<h2 id=""日记内容的整理"">日记内容的整理</h2>
+<p>在<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fwww.yuque.com%2Fdeerain%2Fgannbs%2Fffqk2e"" target=""_blank"" rel=""nofollow ugc"">双向链接时代的快速无压记录</a>中介绍了通过反链汇总内容与直接将内容拖进正文的处理方法。这种操作的优势在于很容易确保内容唯一性，省得为笔记付出更多精力；缺点则是将内容移走会丢失原始上下文，而保留上下文一方面可以留存信息来源，另一方面为未来再次回顾提供了可能，从未来的自己对过去的自己的知识碾压中产生成就感。当然这都不是必须的，只有在实践中着实体会到对信息原始生成情境的需求才有必要额外加以考量，降低认知压力永远是第一要义。</p>
+<p>本人过去习惯于将日记挪到正文以清理主题反链中的传递型双链，直到后来才意识到问题：为什么必须把日记作为笔记整理的前期存储，而非内容本体呢？</p>
+<h3 id=""使用正链引用日记内容"">使用正链引用日记内容</h3>
+<p>根据无压记录流程，日记中的传递型引用指向主题分类，主题的对应反链为待整理内容；而主题的非传递型反链即关联型反链表达内容关联即“知识结构”，那么问题来了：</p>
+<ul>
+<li>日记的反链有什么用？</li>
+</ul>
+<p>了解过<a href=""https://ld246.com/article/1715446523024"">使用 MOC 面向主题地管理笔记</a>后，应当理解了怎样根据主题拆分内容、使用链接引用内容；而有了块粒度的引用，完全不必纠结内容本体的位置，只要在用到的地方加一个正向链接，就可以用锚文本代替本体使用。因此，清理传递型双链时完全不用将日记内容移走，只要在主题中对日记内容进行引用即可，这样日记中的块级反链指向内容的实际上下文，而原本的传递型引用可以转换成纯文本按需命名，反正在主题中出现的只是引用的锚文本。这样主题的反链也清理好了，内容也整理好了，日记中的原始上下文也无需变动，整理速度仅次于不整理。</p>
+<p>这种策略相当于对传统的 <code>将内容拆分成文档后引用</code> 的方法进行改造，<code>将内容拆分成块放进日记后引用</code>，也是只有块级引用才能支撑的用法。这里块引用的概念指的仍然是用锚文本指向本体，而不是原封不动的内容嵌入。嵌入块存在不利于修改、<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fgithub.com%2Fsiyuan-note%2Fsiyuan%2Fissues%2F11976"" target=""_blank"" rel=""nofollow ugc"">不能随意转换</a>、失效后难以追溯等问题，个人不喜欢多用。</p>
+<p>用指向日记的正链做整理解决了上下文问题，规避了锚文本和嵌入块编辑体验差的问题。但如果有人想<a href=""https://ld246.com/article/1720958573868"">保留原文中的部分文本并进行修改</a>，或者说在保留原始上下文的基础上调用内容重新表述，怎样解决静态锚文本差的不行的编辑体验？</p>
+<h3 id=""重述型双链"">重述型双链</h3>
+<p>在 <a href=""https://ld246.com/article/1634538470534"">Conor 工作流</a>中对重述内容的做法是使用 <code>*</code> 锚文本指向原文，思源笔记也支持将引用一键转换为 <code>文本 *</code> 的形式，其中的文本就是原本引用锚文本转成的纯文本，而星号则是对原本内容的引用。无论形式如何，这种双链形式既不同于传递型双链的上下层归属，也不同于关联型双链的锚文本指代本体，其实际发挥的是以下效果：</p>
+<ul>
+<li>链接所指与内容为重述关系，即在保留原始上下文的基础上对内容重新表述；</li>
+<li>引用与本体内容相同或相近，即具有因果参考关系，而非关联型双链中用本体补充引用的调用关系。</li>
+</ul>
+<p>这种双向链接可以称为重述型双链，其形式与作用均区别于传递型双链和关联型双链。采用时髦一点的说法：</p>
+<blockquote>
+<p>传递型双链是函数声明，关联型双链是封装调用，重述型双链是多态重载。<del>所以这个世界就是一个巨大的程序员</del></p>
+</blockquote>
+<p>使用重述型双链能够尽可能确保内容来源具有唯一性，同时到处使用内容而保留各处上下文。但功能越灵活使用越复杂，一份内容各自表述必然会增加笔记复杂性，想要维持其可用性就要用到两条<a href=""https://ld246.com/article/1677162198108"">双链笔记记录规则</a>：</p>
+<ul>
+<li><strong>引用应指向最详细的块</strong></li>
+</ul>
+<p>最详细的块信息最丰富，可以作为某段主题内容的唯一本体块，其他与该内容有关的引用均指向该本体块。对于重述型双链，所有块是对同一内容的复述，引用指向本体块而非链式引用可以最大程度确保正链易用性；而本体块的反链面板可以按创建时间查看迭代形态，无需反复跳转。</p>
+<ul>
+<li><strong>引用应指向关系最密切的块</strong></li>
+</ul>
+<p>使用重述型双链时需要尽可能精确指向，避免内容重构时引用歪掉。</p>
+<p>由此，在对日记进行整理时可以将内容复制进本体块后在原文段末或上层建立指向本体块的重述型双链，不带星号的自然成为本体块便于搜索定位，这就是基于重述型双链的整理方法；而静态锚文本可以只用在关联型双链中，不用于费劲地承担内容重述。进一步可以用以下 SQL 语句在文档反链中排除重述型双链：</p>
+<pre><code class=""language-sql highlight-chroma""><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-k"">select</span><span class=""highlight-w""> </span><span class=""highlight-o"">*</span><span class=""highlight-w""> </span><span class=""highlight-k"">from</span><span class=""highlight-w""> </span><span class=""highlight-n"">blocks</span><span class=""highlight-w""> </span><span class=""highlight-k"">where</span><span class=""highlight-w""> </span><span class=""highlight-n"">id</span><span class=""highlight-w""> </span><span class=""highlight-k"">in</span><span class=""highlight-w""> </span><span class=""highlight-p"">(</span><span class=""highlight-k"">select</span><span class=""highlight-w""> </span><span class=""highlight-n"">block_id</span><span class=""highlight-w""> </span><span class=""highlight-k"">from</span><span class=""highlight-w""> </span><span class=""highlight-n"">refs</span><span class=""highlight-w""> </span><span class=""highlight-k"">where</span><span class=""highlight-w""> </span><span class=""highlight-n"">def_block_root_id</span><span class=""highlight-w""> </span><span class=""highlight-o"">=</span><span class=""highlight-w""> </span><span class=""highlight-s1"">\'20240714215737-c86znvl\'</span><span class=""highlight-w""> </span><span class=""highlight-k"">and</span><span class=""highlight-w""> </span><span class=""highlight-p"">(</span><span class=""highlight-k"">not</span><span class=""highlight-w""> </span><span class=""highlight-n"">content</span><span class=""highlight-w""> </span><span class=""highlight-o"">=</span><span class=""highlight-w""> </span><span class=""highlight-s1"">\'*\'</span><span class=""highlight-p"">))</span><span class=""highlight-w""> </span><span class=""highlight-k"">order</span><span class=""highlight-w""> </span><span class=""highlight-k"">by</span><span class=""highlight-w""> </span><span class=""highlight-n"">created</span><span class=""highlight-w"">
+</span></span></span></code></pre>
+<p>其中把 <code>not</code> 去掉则是筛选出重述型引用。</p>
+<hr>
+<p>以上两种整理方法是个人的笔记方案，使用重述型双链整理碎片内容，使用正链引用整理结构化内容。无压记录 + 内容整理结合<a href=""https://ld246.com/forward?goto=https%3A%2F%2Fwww.yuque.com%2Fdeerain%2Fgannbs%2Fhb0gsd"" target=""_blank"" rel=""nofollow ugc"">基于链接 MOC 的主题管理</a>已经足够完成输入与整理分离、整合的过程，最后要考察的就是怎样组织内容输出。</p>
+<h2 id=""整理---输出"">整理 &amp; 输出</h2>
+<p>虽然通常语境里会将双链工作流划分成前期记录后期整理，不过输出才是真正意义的后期工作，整理只算中期。不过如果笔记面向的只有自己，那么从输入到进行一定程度的整理就已经完成了知识的获取提炼，没有必要花更多精力折腾笔记了，认知减压腾出的心智盈余应该投入到其他更有意义的事情比如在实践中应用知识。如果一定要进行输出表达，就要认识到这是比记录和整理更为困难的事情，因为：</p>
+<blockquote>
+<p>输入和整理过程始终围绕自身的认知展开，而输出必须要同时考虑表达者和接收者的认知减压。</p>
+</blockquote>
+<p>采用先记录后整理，输入与整理分离的策略，一方面有利于碎片化输入，而更重要的是因为初次输入信息时的理解程度必然低于有所积累后的理解程度，先碎片式输入进行“练级”，等认知升级再来回顾整理，就能形成等级压制，更轻松地完成此前做不到的内容，这就是渐进输入的原理。而等到想进行输出时，表达者对欲输出内容的理解程度必然高于接收者，因此应当承担将内容组织成易接收形态的责任，降低接收者获取信息的输入压力。这种组织工作虽然同样颇为艰难，但对于表达者而言肯定比对于接收者而言更简单，因为前者在自身的输入整理过程中已经经历了“练级”，在输出前已经对所要表达的内容及其知识背景有更完整清晰的理解。因为要兼顾信息输出与输入两重减压，所以才有必要将整理与输出分离，不能指望自己已理解的内容直接发出来就能让别人理解。搞过深度学习的人都知道跑别人代码第一步先要配环境，环境不一致就会各种报错；同理在组织输出时不能指望读者与作者的认知图景完全一致，所以需要合理地将用到的知识 import 进去对齐认知基础，把表达内容转化成更容易吸收的形态。</p>
+<p>上面一大段只是为了论证为什么应该将整理与输出分离。双链工作流产生的整理所得只能用于表达的大纲规划、作为输出的内容材料，不能反链汇总直接当做输出，因此双链的功效到这里就结束了，真正撰写文章组织排版其实不太用得到双向链接，最多用嵌入块偷懒。不过对于表达者而言一篇输出文章本质上是对自身已有内容的重新表述，因此可能要考虑怎样使用重述型双链连接原始内容而不影响输出排版，比较简单的方法是：</p>
+<h3 id=""使用HTML注释放置非输出内容"">使用 HTML 注释放置非输出内容</h3>
+<p>将重述型双链置于 HTML 注释中：</p>
+<pre><code class=""language-md highlight-chroma""><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-c"">&lt;!--</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-ge"">**</span><span class=""highlight-c"">**
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-c"">--&gt;</span>
+</span></span></code></pre>
+<p>每个星号表示一个重述型引用的锚文本，既不影响输出又能表达引用关系，非常完美。</p>
+<h2 id=""使用补充"">使用补充</h2>
+<p>以上介绍了个人对于双链工作流使用的理解，除了输入与整理分离、整理与输出分离外，还有一些值得补充的功能用法。</p>
+<h3 id=""转移引用"">转移引用</h3>
+<p>这个功能是将将一个块的被引用链接(入链)转移到指向另一个块上，使用方法参考<a href=""https://ld246.com/article/1688057970884"">转移引用功能使用详解</a>，使用转移引用插件还可以更细致地选择对一个块的哪些引用进行转移。有了转移引用功能可以对输入后的整理进一步兜底，例如：</p>
+<ul>
+<li>在无压记录时不必担心引用主题不合适，可以等整理时根据全新的理解将其转移到正确指向目标；</li>
+<li>进一步的，甚至可以在建立传递型双链时直接写 <code>[[待整理]]</code>，把分类工作都推到未来，想初步整理时再转移引用；</li>
+<li>在整理时想重构某部分笔记体系了，可以新建文档后利用转移引用重新规划内容结构，旧笔记体系及其链接有用转移没用直接忽略掉。</li>
+</ul>
+<p>需要注意的是，目前思源笔记的单向块链接不支持转移引用，因此不建议将块引用转换成单向链接。</p>
+<h3 id=""列表大纲"">列表大纲</h3>
+<p>思源作为以块为基础的文档型笔记软件，先天具备完备的表达能力和统一的块粒度，完全继承了文档型笔记的传统优势；而与此同时，以 JSON 为基础的列表块在性能与操作手感上能够碾压以 Markdown 语法为基础的列表，使其完全可以当成一般的大纲笔记使用而毫不逊色。在思源笔记中使用列表组织双链工作流具有以下优势：</p>
+<ul>
+<li>
+<p>列表项是最稳定的块类型，且列表的树状层级逻辑具有高度鲜明的结构化特征，统一使用列表项可以避免<a href=""https://ld246.com/article/1718617130993"">容器块引用挂掉</a>的问题；</p>
+</li>
+<li>
+<p>引用列表项可以在浮窗或反链中显示子层列表，展示内容更丰富；</p>
+</li>
+<li>
+<p>自定义块样式插件能将列表转换为表格、导图、看板，提供更丰富的布局，例如：</p>
+<p><img src=""https://b3logfile.com/file/2024/07/siyuan/1708672140410/assets/1-20240724143649-wlesdl5.jpg?imageView2/2/interlace/1/format/webp""></p>
+</li>
+<li>
+<p>列表配合 Daily Note 的性能优势：</p>
+</li>
+</ul>
+<p>思源笔记的性能对文档数与块数不敏感，而对块大小敏感，因此先分散记录后汇总整理可以避免在单个列表块中记录使其大小不断膨胀而不断面临性能下降的问题，减小为加载性能额外付出的整理成本。准确而言，这是将列表块的大小变化从周期锯齿形转换为周期冲激形，只需要在每次汇总时处理大列表块，平时就不会遇到性能衰减。</p>
+<p>‍</p>
+<p>在使用列表项时需要注意块引用的操作细节：</p>
+<ul>
+<li>对列表项块标或圆点右键块菜单复制的块引用、嵌入块对应于列表项层级，包含圆点符号和子层列表；</li>
+<li>光标在文中使用 <code>Ctrl+/</code> 块菜单，或光标不在文中时对内容使用右键块菜单，所得的块引用、嵌入块对应于列表项中最内层块如段落的块链接，不包含圆点符号和子层列表</li>
+<li>使用 <code>Ctrl+拖拽块标</code> 复制块，使用 <code>Alt+拖拽块标</code> 复制块引用。例如先将已有反链的块移动到目标位置，再复制回原处并建立重述型双链。</li>
+</ul>
+<hr>
+<p>最后吹一下思源笔记，纵观本地笔记软件，思源好像缺少一个标志性的宣传词，显得颇为中庸。事实上思源笔记可以说集百家之长，糅合了各种笔记理念，各种用法至少都可以付诸实践，很适合作为通用知识管理方法论示范软件。</p>
+<hr>
+<p>以上是近期学习使用双链工作流的一些经验心得，希望本文能让读者对思源和双链有些新理解。作者才疏学浅，仅作抛砖引玉。</p>
+<p><img src=""https://b3logfile.com/file/2024/07/siyuan/1708672140410/assets/无理取N-20240724150705-gbv9js1.png?imageView2/2/interlace/1/format/webp""></p>
+                
+
+作者：Imuvux
+链接：https://ld246.com/article/1721807032816
+来源：链滴
+协议：CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/",Imuvux,思源笔记,链滴优选
+1091,思源笔记编辑器区域水印 JS 代码块分享 - 链滴,Mon Jul 29 2024 22:54:03 GMT+0000 (Coordinated Universal Time),"
+                    <h3 id=""前言"">前言</h3>
+<p>鉴于之前使用过的腾讯文档支持文档水印，后来使用思源笔记，在上课展示文档的时候，习惯性会给弄上水印，思源笔记本身似乎不支持直接在编辑器区域添加水印，故自己写了个 JS 代码片段。</p>
+<p><img src=""https://b3logfile.com/file/2024/07/iShot_2024-07-29_18.02.42-q9MKm3C.png?imageView2/2/interlace/1/format/webp""></p>
+<h3 id=""代码片段"">代码片段</h3>
+<p>提醒：水印文本比较多的时候，改一下水印的宽度高度即 watermarkWidth、watermarkHeight，否则水印展示不全。</p>
+<p>JS 代码片段：</p>
+<pre><code class=""language-js highlight-chroma""><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-kd"">let</span> <span class=""highlight-nx"">watermarkContent</span> <span class=""highlight-o"">=</span> <span class=""highlight-s2"">\""多仔ヾ\""</span><span class=""highlight-p"">;</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-kd"">let</span> <span class=""highlight-nx"">watermarkWidth</span> <span class=""highlight-o"">=</span> <span class=""highlight-mi"">120</span><span class=""highlight-p"">;</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-kd"">let</span> <span class=""highlight-nx"">watermarkHeight</span> <span class=""highlight-o"">=</span> <span class=""highlight-mi"">70</span><span class=""highlight-p"">;</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl"">
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-kd"">let</span> <span class=""highlight-nx"">canvas</span> <span class=""highlight-o"">=</span> <span class=""highlight-nb"">document</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">createElement</span><span class=""highlight-p"">(</span><span class=""highlight-s2"">\""canvas\""</span><span class=""highlight-p"">);</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-kd"">let</span> <span class=""highlight-nx"">ctx</span> <span class=""highlight-o"">=</span> <span class=""highlight-nx"">canvas</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">getContext</span><span class=""highlight-p"">(</span><span class=""highlight-s1"">\'2d\'</span><span class=""highlight-p"">);</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-nx"">canvas</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">width</span> <span class=""highlight-o"">=</span> <span class=""highlight-nx"">watermarkWidth</span><span class=""highlight-p"">;</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-nx"">canvas</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">height</span> <span class=""highlight-o"">=</span> <span class=""highlight-nx"">watermarkHeight</span><span class=""highlight-p"">;</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-nx"">ctx</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">font</span> <span class=""highlight-o"">=</span> <span class=""highlight-s2"">\""14px Arial\""</span><span class=""highlight-p"">;</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-nx"">ctx</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">fillStyle</span> <span class=""highlight-o"">=</span> <span class=""highlight-s2"">\""rgba(211, 211, 211, .3)\""</span><span class=""highlight-p"">;</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-nx"">ctx</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">rotate</span><span class=""highlight-p"">((</span><span class=""highlight-o"">-</span><span class=""highlight-mi"">25</span> <span class=""highlight-o"">*</span> <span class=""highlight-nb"">Math</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">PI</span><span class=""highlight-p"">)</span> <span class=""highlight-o"">/</span> <span class=""highlight-mi"">180</span><span class=""highlight-p"">);</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-nx"">ctx</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">fillText</span><span class=""highlight-p"">(</span><span class=""highlight-nx"">watermarkContent</span><span class=""highlight-p"">,</span> <span class=""highlight-mi"">0</span><span class=""highlight-p"">,</span> <span class=""highlight-nx"">canvas</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">height</span><span class=""highlight-o"">/</span><span class=""highlight-mi"">2</span><span class=""highlight-p"">);</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl"">
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-kd"">let</span> <span class=""highlight-nx"">watermarkDataURL</span> <span class=""highlight-o"">=</span> <span class=""highlight-nx"">canvas</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">toDataURL</span><span class=""highlight-p"">(</span><span class=""highlight-s1"">\'image/png\'</span><span class=""highlight-p"">);</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-kr"">const</span> <span class=""highlight-nx"">defaultStyle</span> <span class=""highlight-o"">=</span> <span class=""highlight-nb"">document</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">createElement</span><span class=""highlight-p"">(</span><span class=""highlight-s1"">\'style\'</span><span class=""highlight-p"">);</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-nx"">defaultStyle</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">innerHTML</span> <span class=""highlight-o"">=</span> <span class=""highlight-sb"">`.protyle::before {
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    content: \'\';
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    display: block;
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    position: absolute;
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    top: 0;
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    left: 0;
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    height: 100%;
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    width: 100%;
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    background-image: url(</span><span class=""highlight-si"">${</span><span class=""highlight-nx"">watermarkDataURL</span><span class=""highlight-si"">}</span><span class=""highlight-sb"">);
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    background-repeat: repeat;
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    pointer-events: none;
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">    z-index: 10;
+</span></span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-sb"">}`</span><span class=""highlight-p"">;</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl""><span class=""highlight-nb"">document</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">head</span><span class=""highlight-p"">.</span><span class=""highlight-nx"">appendChild</span><span class=""highlight-p"">(</span><span class=""highlight-nx"">defaultStyle</span><span class=""highlight-p"">);</span>
+</span></span><span class=""highlight-line""><span class=""highlight-cl"">
+</span></span></code></pre>
+                
+
+作者：visduo
+链接：https://ld246.com/article/1722247445881
+来源：链滴
+协议：CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/",visduo,思源笔记,链滴优选
 982,如何查看最近写了哪些笔记呢？,Sun Jul 28 2024 23:53:06 GMT+0000 (Coordinated Universal Time),"<h2>需求</h2><p>我会把每天的笔记按分类，写在不同的文档里。想有一个自动的视图，能看到今天写了哪些笔记。</p><p>比如今天看到一个软件不错，就记录在【windows &gt; 软件使用】页面里。就希望自动更新的视图里能展示：</p><blockquote><p>2024-07-27</p><ul><li>windows &gt; 软件使用<ul><li>写的笔记内容</li></ul></li></ul></blockquote><p>应该通过什么功能、插件来实现呢？或者写代码如何实现</p><p>求大佬解答</p><h2>实现</h2><p>如果想自定义，还得 js，这里建议安装 data-query 插件</p><p><span class=""vditor-reset__preview""><img src=""https://b3logfile.com/file/2024/07/image-ruYYTFd.png?imageView2/2/interlace/1/format/webp"" alt=""image.png"" /></span></p><p>然后就可以配合 SQL 实现这种效果吧</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/image-49-1024x645.png"" alt=""image"" data-edit-file-id=""1086"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/image-49.png"" /></p><p>代码如下：</p><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">//!js
 // 过滤笔记名，不支持模糊匹配
 const boxName = """"
