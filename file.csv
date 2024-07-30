@@ -749,7 +749,9 @@ return query(path, boxName)</code></pre><p>以上代码参考了 mohuishou 大�
 链接：https://ld246.com/article/1722165430014
 来源：链滴
 协议：CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/",EmberSky,思源笔记,链滴优选
-977,js 代码片段实现，只展开当前活动文档所在的目录树,Sun Jul 28 2024 13:38:25 GMT+0000 (Coordinated Universal Time),"<h2>需求</h2><p>在使用“始终定位打开的文档”功能时，只展开当前文档的文档树，自动关闭（不展开）其它无关的文档树。</p><p>例如：</p><p>有笔记本 A，内有文档 A1，子文档 A2、子子文档 A3。</p><p>有笔记本 B，内有文档 B1，子文档 B2、子子文档 B3。</p><p>已将文档 A2、B2 打开，显示在上方页签栏中。</p><p>启用“始终定位打开的文档”功能。</p><p>点击 A2 页签，左侧文档树自动展开，并定位到 A-A1-A2；A3 列表不展开</p><p>点击 B2 页签，左侧文档树自动展开，定位到 B-B1-B2；<strong>同时关闭 A-A1-A2 文档树的展开状态，恢复到笔记本 A</strong>。也就是仅保留当前活动页签对应的文档树是展开状态，其它文档树分支全部关闭，包括当前活动文档的子文档树。</p><h2>实现</h2><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">// 等待标签页容器渲染完成后开始监听
+977,js 代码片段实现，只聚焦当前文档所在的目录树,Sun Jul 28 2024 13:38:25 GMT+0000 (Coordinated Universal Time),"<h2>需求</h2><p>在使用“始终定位打开的文档”功能时，只展开当前文档的文档树，自动关闭（不展开）其它无关的文档树。</p><p>例如：</p><p>有笔记本 A，内有文档 A1，子文档 A2、子子文档 A3。</p><p>有笔记本 B，内有文档 B1，子文档 B2、子子文档 B3。</p><p>已将文档 A2、B2 打开，显示在上方页签栏中。</p><p>启用“始终定位打开的文档”功能。</p><p>点击 A2 页签，左侧文档树自动展开，并定位到 A-A1-A2；A3 列表不展开</p><p>点击 B2 页签，左侧文档树自动展开，定位到 B-B1-B2；<strong>同时关闭 A-A1-A2 文档树的展开状态，恢复到笔记本 A</strong>。也就是仅保留当前活动页签对应的文档树是展开状态，其它文档树分支全部关闭，包括当前活动文档的子文档树。</p><h2>实现</h2><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">// 加载时是否自动定位当前文档
+const autoFocusTreeOnload = true;
+// 等待标签页容器渲染完成后开始监听
 whenElementExist('.layout__center').then(async element =&gt; {
     // 等待笔记列表加载完毕
     await sleep(40);
@@ -758,23 +760,61 @@ whenElementExist('.layout__center').then(async element =&gt; {
         // 折叠所有笔记，然后定位当前笔记
         collapseAllBooksThenFocusCurrentBook(element, tab);
     });
+    // 加载时定位当前文档
+    if(autoFocusTreeOnload) {
+        await sleep(40);
+        focusCurrentDocInTrees();
+    }
 });
 // 折叠所有笔记，然后定位当前笔记
 async function collapseAllBooksThenFocusCurrentBook(element, tab) {
+    let currNodeId = """";
     // 等待激活文档加载完毕
     await whenElementExist(()=&gt;{
         const content = element.querySelector('.layout-tab-container [data-id=""'+tab.getAttribute(""data-id"")+'""]');
-        return content &amp;&amp; content.getAttribute(""data-loading"") === ""finished"";
+        // 获取当前文档的node-id
+        currNodeId = document.querySelector('.layout-tab-container [data-id=""'+tab.getAttribute(""data-id"")+'""] .protyle-title')?.getAttribute(""data-node-id"") || """";
+        return content &amp;&amp; content.getAttribute(""data-loading"") === ""finished"" &amp;&amp; currNodeId;
     });
-    // 折叠所有笔记
-    document.querySelectorAll(""ul.b3-list[data-url]"").forEach(async book =&gt; {
-        const bookName = tab.getAttribute(""aria-label"")?.split('/')[0];
-        if(bookName) {
-            // 如果在本笔记中则不再折叠
-            const bookText = book.querySelector('li[data-type=""navigation-root""] span.b3-list-item__text')?.innerText;
-            if(bookText === bookName) {
-                return;
+    // 获取当前文档所在的路径和当前笔记，并折叠当前文档以外的目录
+    let currBoxDataUrl = """";
+    if(currNodeId){
+        // 定位当前文档
+        focusCurrentDocInTrees();
+        // 等待定位完成
+        let currTreeItem = null;
+        await whenElementExist(()=&gt;{
+            currTreeItem = document.querySelector(""ul.b3-list[data-url] li[data-node-id='"" + currNodeId + ""']"");
+            return currTreeItem;
+        });
+        // 获取当前文档在目录树中的node-id
+        if(currTreeItem) {
+            // 获取当前笔记的data-url
+            currBoxDataUrl = currTreeItem.closest('ul.b3-list[data-url]')?.getAttribute(""data-url"") || """";
+            if(currBoxDataUrl){
+                // 获取当前文档所在的路径
+                currTreeItemPath = currTreeItem.getAttribute(""data-path"");
+                // 获取所有展开的目录
+                const trees = document.querySelectorAll(""ul.b3-list[data-url='"" + currBoxDataUrl + ""'] span.b3-list-item__toggle svg.b3-list-item__arrow--open"");
+                trees.forEach(arrowBtn =&gt; {
+                    // 如果是当前文档的上级目录则跳过
+                    const itemPath = arrowBtn.closest('li.b3-list-item')?.getAttribute(""data-path"")?.replace(/\.sy$/i, '');
+                    if(currTreeItemPath.startsWith(itemPath)){
+                        return;
+                    }
+                    // 其他目录则折叠
+                    if (arrowBtn.parentElement) {
+                        arrowBtn.parentElement.click();
+                    }
+                });
             }
+        }
+    }
+    // 折叠除当前笔记外的所有笔记
+    document.querySelectorAll(""ul.b3-list[data-url]"").forEach(async book =&gt; {
+        // 如果是当前笔记则跳过
+        if(book.getAttribute(""data-url"") === currBoxDataUrl) {
+            return;
         }
         // 折叠笔记
         const bookArrowBtn = book.querySelector('li[data-type=""navigation-root""] span.b3-list-item__toggle');
@@ -782,8 +822,26 @@ async function collapseAllBooksThenFocusCurrentBook(element, tab) {
             bookArrowBtn.click();
         }
     });
-    // 定位当前笔记
+}
+// 在目录树中定位当前文档
+async function focusCurrentDocInTrees() {
+    // 定位当前文档
     document.querySelector("".layout-tab-container .block__icons span[data-type=focus]"")?.click();
+    // 等待定位完成
+    await whenElementExist(()=&gt;{
+        return document.querySelector('ul.b3-list[data-url] li[data-type=""navigation-file""].b3-list-item--focus');
+    });
+    // 处理官方定位，在未打开目录树时，左侧dock区目录树显示隐藏按钮样式会获取焦点的bug
+    await sleep(40);
+    const dockFileTreeBtn = document.querySelector('#dockLeft span[data-type=""file""]');
+    if(document.querySelector('#layouts .layout__dockl')?.style?.width === ""0px""){
+        if(dockFileTreeBtn.classList.contains(""dock__item--active"")) {
+            dockFileTreeBtn.classList.remove(""dock__item--active"");
+        }
+        if(dockFileTreeBtn.classList.contains(""dock__item--activefocus"")) {
+            dockFileTreeBtn.classList.remove(""dock__item--activefocus"");
+        }
+    }
 }
 // 监听页签切换事件
 function observeTabChanged(parentNode, callback) {
@@ -843,14 +901,7 @@ function whenElementExist(selector) {
         };
         checkForElement();
     });
-}</code></pre><h2>效果</h2><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/t2.gif"" alt=""t2"" data-edit-file-id=""975"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/t2.gif"" /></p><h2>使用方法</h2><p>设置 》外观 》代码片段 》js 中新增加代码片段，然后把上面的代码粘贴过去即可。</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/image-WGgDxi6-1024x603.png"" alt=""image-WGgDxi6"" data-edit-file-id=""976"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/image-WGgDxi6.png"" /></p><h2>不足</h2><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">const bookName = tab.getAttribute(""aria-label"")?.split('/')[0];
-        if(bookName) {
-            // 如果在本笔记中则不再折叠
-            const bookText = book.querySelector('li[data-type=""navigation-root""] span.b3-list-item__text')?.innerText;
-            if(bookText === bookName) {
-                return;
-            }
-        }</code></pre><p>这段代码，本意是想通过标签的<span style=""color: var(--main-color)"">aria-label属性实现，如果展开的笔记是当前点击的文档所在笔记不再折叠再展开了，这样防止出现跳动。但现在想来如果同一个笔记下，展开多个目录可能会导致同个笔记下的文档切换时不再折叠，<strong>不知道是否符合你的需求，如果不符合，建议把这段代码删除</strong>。而且这段代码在打开文档时还会出现跳动，实现并不完美。</span></p><p>比如，如下场景不会折叠同个笔记下的目录</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/t4.gif"" alt=""t4"" data-edit-file-id=""978"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/t4.gif"" /></p><h2>最后</h2><p>由于刚接触思源，对思源 api 还不是很了解，所以选择用 js 代码片段实现，纯原生 js 实现，方法比较笨，勉强能用。</p><p>不足之处也请各界大佬们帮忙改进或多多批评指正！</p><p>文章来源：<a href=""https://ld246.com/article/1717306355600"">https://ld246.com/article/1717306355600</a></p>",wilson,"代码片段,目录树",JS
+}</code></pre><h2>效果</h2><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/t6.gif"" alt=""t6"" data-edit-file-id=""1093"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/t6.gif"" /></p><p> </p><p> </p><h2>使用方法</h2><p>设置 》外观 》代码片段 》js 中新增加代码片段，然后把上面的代码粘贴过去即可。</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/image-WGgDxi6-1024x603.png"" alt=""image-WGgDxi6"" data-edit-file-id=""976"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/image-WGgDxi6.png"" /></p><p> </p><h2>最后</h2><p>由于刚接触思源，对思源 api 还不是很了解，所以选择用 js 代码片段实现，纯原生 js 实现，方法比较笨，勉强能用。</p><p>不足之处也请各界大佬们帮忙改进或多多批评指正！</p><p>文章来源：<a href=""https://ld246.com/article/1717306355600"">https://ld246.com/article/1717306355600</a></p>",wilson,"代码片段,目录树",JS
 958,思源派全站文章导出,Sat Jul 27 2024 01:26:03 GMT+0000 (Coordinated Universal Time),"<h2>思源派文章现在会每隔一个小时自动发布全站文章数据到GitHub上面</h2><p>访问以下仓库，下载file.csv即可</p><p><a href=""https://github.com/sypai-cc/all-posts"">https://github.com/sypai-cc/all-posts</a></p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/QQ截图20240727012840.png"" alt=""QQ截图20240727012840"" data-edit-file-id=""959"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/QQ截图20240727012840.png"" /></p>",HAN,,新闻
 956,思源派发布文章已经无需审核,Fri Jul 26 2024 23:47:09 GMT+0000 (Coordinated Universal Time),<p>现在，只要正常登录思源派，即可免审核发布自己的文章</p>,HAN,,新闻
 954,思源版 Dataview.js 的愿景,Fri Jul 26 2024 21:04:38 GMT+0000 (Coordinated Universal Time),"<p>基于 js query 和弘佬的 Data Query 做二次开发（把 API 调整地更加人性化一点）；可以的话最好加上能降低编写门槛的 GUI 配置界面。</p><p><img src=""https://sypai.cc/wp-content/uploads/2024/07/image-47-1024x464.png"" alt=""image"" data-edit-file-id=""953"" data-full-url=""https://sypai.cc/wp-content/uploads/2024/07/image-47.png"" /></p><p>以上渲染结果对应以下代码：</p><pre class=""enlighter-pre"" contenteditable=""false""><code class=""gl"" data-enlighter-language=""javascript"">//!js
